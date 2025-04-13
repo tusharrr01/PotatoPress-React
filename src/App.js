@@ -20,7 +20,7 @@ const App = ()=> {
       document.body.style.backgroundColor = 'white';
     }
   }
-  const apiKey = process.env.REACT_APP_NEWS_API ;
+  const apiKey = process.env.REACT_APP_NEWS_API_KEY ;
   const pages = 9;
   const [progress,setprogress] =  useState(0)
     return (
@@ -30,9 +30,9 @@ const App = ()=> {
           color="#f11946"
           progress={progress}
         />
-        <NavBar mode={mode} toggleMode={toggleMode} key={new Date()} />
+        <NavBar mode={mode} toggleMode={toggleMode} key="navbar" />
           <Routes>
-          <Route path="/" element={<News mode={mode} setProgress={setprogress} apiKey={apiKey} key="general" country="in" category="general" articlesPerPage={pages} />} />
+            <Route path="/general" element={<News mode={mode} setProgress={setprogress} apiKey={apiKey} key="general" country="in" category="general" articlesPerPage={pages} />} />
             <Route path="/business" element={<News mode={mode} setProgress={setprogress} apiKey={apiKey} key="business" country="in" category="business" articlesPerPage={pages} />} />
             <Route path="/entertainment" element={<News mode={mode} setProgress={setprogress} apiKey={apiKey} key="entertainment" country="in" category="entertainment" articlesPerPage={pages} />} />
             <Route path="/health" element={<News mode={mode} setProgress={setprogress} apiKey={apiKey} key="health" country="in" category="health" articlesPerPage={pages} />} />

@@ -6,42 +6,54 @@
 ![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
 ## 📌 Project Overview
-- PotatoPress is a high-performance news aggregation web application that delivers real-time headlines from NewsAPI.org in a clean, responsive interface. Designed for optimal readability and navigation, it categorizes news into sections (Business, Technology, Sports, etc.) and dynamically filters content using React.
+- PotatoPress is a high-performance news aggregation web application that delivers real-time headlines from NewsAPI.org in a clean, responsive interface. It features a modern React frontend with a separate Express.js backend for secure API management. Designed for optimal readability and navigation, it categorizes news into sections (Business, Technology, Sports, etc.) and dynamically filters content using React.
 
 ![Preview](Img/demo.jpg)
 
 ## 🛠 Technical Implementation
+- **Frontend Stack** :
+  - React.js with Hooks (useState, useEffect)
+  - Infinite scroll for seamless content loading
+  - Dark/Light mode support
+  - Responsive Bootstrap-based UI
+  
 - **API Integration** :
-  - Data Source: NewsAPI.org
-  - Authentication: Secure API key management via .env
+  - Data Source: NewsAPI via Express backend
+  - Secure server-side API key management
+  - Automatic API key rotation on backend
+  
 - **Performance Optimizations** :
   - Lazy loading components
-  - Memoized API calls
+  - Infinite scroll pagination
   - Efficient re-rendering with React.memo
 
 ## ⚙ Setup & Deployment
 - **Prerequisites** :
   - Node.js ≥ v16
-  - NewsAPI Key (Get Yours Here)
+  - Express backend running (see backend folder for setup)
 
 - **Local Development** :
+
+### Installation
 ```bash 
-#Clone the repository : 
-git clone https://github.com/tusharr01/PotatoPress.git
+# Clone the repository
+git clone https://github.com/tusharr01/PotatoPress-React.git
+cd PotatoPress-React
 
-# Navigate to project directory : 
-cd PotatoPress
-
-#Install dependencies :
+# Install dependencies
 npm install
 
-#Configure environment variables-  :
-echo "REACT_APP_NEWS_API_KEY = your_api_key #[ ex :- REACT_APP_NEWS_API_KEY=a78903f3a165d03f]" > .env
+# Create and configure .env file
+cp .env.example .env
+# REACT_APP_BACKEND_URL=http://localhost:5000
 
-#Start the development server:
-npm run start
+# Start React development server (runs on port 3000)
+npm start
 ```
 
-## 👨‍💻 Developer
+Your app will be available at `http://localhost:3000`
+
+## ‍💻 Developer
 - Made with ❤️ by [Tushar](https://github.com/tusharrr01)
 - [LinkedIn](https://www.linkedin.com/in/tushar-kaklotar-175887283?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BQbxiACx1SaWtiatjC34puA%3D%3D)
+

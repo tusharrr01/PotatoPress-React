@@ -3,6 +3,7 @@ import NewsItem from './NewsItem.js'
 import Spinner from './Spinner.js';
 import PropTypes from 'prop-types'
 import InfiniteScroll from "react-infinite-scroll-component";
+import { NEWS_ENDPOINT } from '../config';
 
 const News = (props)=>{
   const [articles,setarticles] = useState([])
@@ -12,9 +13,8 @@ const News = (props)=>{
 
   const fetchNews = async ()=> {
     setloading(true);
-    <Spinner mode={props.mode}/>
     props.setProgress(5);  
-    let url = `https://newsapi.org/v2/top-headlines?country=us&pageSize=${props.articlesPerPage}&category=${props.category}&Country=${props.Country}&page=${page}&apiKey=${props.apiKey}`; 
+    let url = `${NEWS_ENDPOINT}?country=us&pageSize=${props.articlesPerPage}&category=${props.category}&page=${page}`; 
     props.setProgress(10)
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -33,7 +33,7 @@ const News = (props)=>{
       setloading(true)
     }
     setpage(page+1) 
-    let url = `https://newsapi.org/v2/top-headlines?country=us&pageSize=${props.articlesPerPage}&category=${props.category}&Country=${props.Country}&page=${page+1}&apiKey=${props.apiKey}`; 
+    let url = `${NEWS_ENDPOINT}?country=us&pageSize=${props.articlesPerPage}&category=${props.category}&page=${page+1}`; 
     let data = await fetch(url);
     let parsedData = await data.json();
     console.log(parsedData);
@@ -79,5 +79,6 @@ News.propTypes = {
   articlesPerPage: PropTypes.number,
   category: PropTypes.string,
   setProgress : PropTypes.func,
+  mode: PropTypes.string,
 }
 export default News
